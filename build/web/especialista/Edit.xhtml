@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditEspecialistaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditEspecialistaLabel_noTrabajador}" for="noTrabajador" />
+                    <h:inputText id="noTrabajador" value="#{especialistaController.selected.noTrabajador}" title="#{bundle.EditEspecialistaTitle_noTrabajador}" required="true" requiredMessage="#{bundle.EditEspecialistaRequiredMessage_noTrabajador}"/>
+                    <h:outputLabel value="#{bundle.EditEspecialistaLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{especialistaController.selected.nombre}" title="#{bundle.EditEspecialistaTitle_nombre}" />
+                    <h:outputLabel value="#{bundle.EditEspecialistaLabel_correo}" for="correo" />
+                    <h:inputText id="correo" value="#{especialistaController.selected.correo}" title="#{bundle.EditEspecialistaTitle_correo}" />
+                    <h:outputLabel value="#{bundle.EditEspecialistaLabel_contrasenia}" for="contrasenia" />
+                    <h:inputText id="contrasenia" value="#{especialistaController.selected.contrasenia}" title="#{bundle.EditEspecialistaTitle_contrasenia}" />
+                </h:panelGrid>
+                <h:commandLink action="#{especialistaController.update}" value="#{bundle.EditEspecialistaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditEspecialistaViewLink}"/>
+                <br />
+                <h:commandLink action="#{especialistaController.prepareList}" value="#{bundle.EditEspecialistaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditEspecialistaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

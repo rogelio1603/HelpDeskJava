@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditTicketTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditTicketLabel_noTicket}" for="noTicket" />
+                    <h:inputText id="noTicket" value="#{ticketController.selected.noTicket}" title="#{bundle.EditTicketTitle_noTicket}" required="true" requiredMessage="#{bundle.EditTicketRequiredMessage_noTicket}"/>
+                    <h:outputLabel value="#{bundle.EditTicketLabel_fecha}" for="fecha" />
+                    <h:inputText id="fecha" value="#{ticketController.selected.fecha}" title="#{bundle.EditTicketTitle_fecha}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditTicketLabel_area}" for="area" />
+                    <h:inputText id="area" value="#{ticketController.selected.area}" title="#{bundle.EditTicketTitle_area}" />
+                    <h:outputLabel value="#{bundle.EditTicketLabel_asunto}" for="asunto" />
+                    <h:inputText id="asunto" value="#{ticketController.selected.asunto}" title="#{bundle.EditTicketTitle_asunto}" />
+                    <h:outputLabel value="#{bundle.EditTicketLabel_problematica}" for="problematica" />
+                    <h:inputText id="problematica" value="#{ticketController.selected.problematica}" title="#{bundle.EditTicketTitle_problematica}" />
+                    <h:outputLabel value="#{bundle.EditTicketLabel_estado}" for="estado" />
+                    <h:inputText id="estado" value="#{ticketController.selected.estado}" title="#{bundle.EditTicketTitle_estado}" />
+                    <h:outputLabel value="#{bundle.EditTicketLabel_especialista}" for="especialista" />
+                    <h:selectOneMenu id="especialista" value="#{ticketController.selected.especialista}" title="#{bundle.EditTicketTitle_especialista}" >
+                        <f:selectItems value="#{especialistaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditTicketLabel_idUsuario}" for="idUsuario" />
+                    <h:selectOneMenu id="idUsuario" value="#{ticketController.selected.idUsuario}" title="#{bundle.EditTicketTitle_idUsuario}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{ticketController.update}" value="#{bundle.EditTicketSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditTicketViewLink}"/>
+                <br />
+                <h:commandLink action="#{ticketController.prepareList}" value="#{bundle.EditTicketShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditTicketIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
