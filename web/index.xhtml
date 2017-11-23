@@ -5,15 +5,28 @@
     <h:head>
         <title>Facelet Title</title>
         <h:outputStylesheet name="css/jsfcrud.css"/>
+        <h:outputStylesheet name="css/estilos.css"/>
     </h:head>
     <h:body>
-        <h1>Hola soy kikis, bienvenido a GitHub</h1>
-        <br />
-        <h:link outcome="/especialista/List" value="Show All Especialista Items"/>
-        <br />
-        <h:link outcome="/ticket/List" value="Show All Ticket Items"/>
-        <br />
-        <h:link outcome="/usuario/List" value="Show All Usuario Items"/>
+        <header>
+            <nav>
+                <ul>
+                    <li><h:link outcome="/especialista/List" value="Show All Especialista Items"/></li>
+                    <li><h:link outcome="/ticket/List" value="Show All Ticket Items"/></li>
+                    <li><h:link outcome="/usuario/List" value="Show All Usuario Items"/></li>
+                </ul>
+            </nav>
+            
+            <div class="slider">
+                <h1>Help Desk</h1>
+            </div>
+            
+        </header>
+        
+        
+        
+        
+        
     </h:body>
 </html>
 
