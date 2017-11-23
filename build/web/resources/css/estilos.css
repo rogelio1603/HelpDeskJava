@@ -1,6 +1,13 @@
 
 a{
     text-decoration: none;
+    margin-right: 10px;
+    color: black;
+    font-size: 1.5em;
+}
+a:hover{
+    padding-bottom: 5px;
+    border-bottom: 1px solid black;
 }
 
 body{
@@ -13,8 +20,14 @@ li{
     padding: 10px;
 }
 
+.slider{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 ul{
     display: flex;
     list-style: none;
-    justify-content: flex-around;
+    justify-content: flex-end;
 }
