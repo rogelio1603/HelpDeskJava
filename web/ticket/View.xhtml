@@ -7,9 +7,18 @@
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
-            <h:outputText value="#{bundle.ViewTicketTitle}"></h:outputText>
+          <header>
+                <h:outputText value="Datos del ticket"></h:outputText>
+                <nav>
+                    <ul>
+                        <li> <h:link outcome="/index" value="Menù principal" class='index'/></li>
+                    </ul>
+                </nav>
+            </header>
         </ui:define>
         <ui:define name="body">
+            <div class='contenedor'>
+            
             <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
@@ -35,19 +44,99 @@
                     <h:outputText value="#{ticketController.selected.idUsuario}" title="#{bundle.ViewTicketTitle_idUsuario}"/>
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{ticketController.destroyAndView}" value="#{bundle.ViewTicketDestroyLink}"/>
+                <h:commandLink action="#{ticketController.destroyAndView}" value="Eliminar"/>
                 <br />
                 <br />
-                <h:link outcome="Edit" value="#{bundle.ViewTicketEditLink}"/>
+                <h:link outcome="Edit" value="Editar"/>
                 <br />
-                <h:commandLink action="#{ticketController.prepareCreate}" value="#{bundle.ViewTicketCreateLink}" />
+                <h:commandLink action="#{ticketController.prepareCreate}" value="Crear nuevo ticket" />
                 <br />
-                <h:commandLink action="#{ticketController.prepareList}" value="#{bundle.ViewTicketShowAllLink}"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ViewTicketIndexLink}"/>
+                <h:commandLink action="#{ticketController.prepareList}" value="Ver todos los tickets"/>
+
 
             </h:form>
+            
+            </div>
+             <footer>
+                <h2>Derechos reservados por la Universidad de Colima</h2>
+            </footer>
+            
+            
+    <style>      
+               a{
+            color: lightskyblue;
+            text-decoration: none;
+        }
+        a:hover{
+            border-bottom: 1px solid black;
+        }
+        body,html{
+           margin: 0;
+           padding: 0;
+           border: 0;
+           height: 100%;
+           width: 100%;
+        }
+        
+        footer{
+            margin: 0;
+            padding: 0;
+            border: 0;
+            background: black;
+            color: white;
+            width: 100%;
+            height: 58px;
+            text-align: center;
+        }
+        
+        
+
+        header{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            height: 80px;
+            background: lightgreen;
+            border-bottom: 2px solid black;
+            
+        }
+        h1{
+            border: 0;
+            padding: 0;
+            margin: 0;
+        }
+
+        ul{
+            list-style: none;
+        }
+        
+        ul a{
+            color: black;
+            text-decoration: none;
+        }
+        td{
+            font-size: 1.5em;
+        }
+        
+        .contenedor{
+            width: 50%;
+            background: red;
+            margin: auto;
+            margin-top: 2em;
+            height: 600px;
+            background: rgba(1,1,1,0.5);
+            border-radius: 10px;
+            border: 2px solid black;
+            color: white;
+            font-size: 1.5em;
+        }
+            
+        .opciones{
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
         </ui:define>
     </ui:composition>
 
