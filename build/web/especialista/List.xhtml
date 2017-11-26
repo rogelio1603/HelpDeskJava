@@ -6,63 +6,181 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:composition template="/template.xhtml">
+        
         <ui:define name="title">
-            <h:outputText value="#{bundle.ListEspecialistaTitle}"></h:outputText>
+            <header>
+                 <h1>Especialistas</h1>
+                  <h:link outcome="/index" value="Menú principal" class="linkIndex"/>
+            </header>
+               
         </ui:define>
+       
         <ui:define name="body">
-            <h:form styleClass="jsfcrud_list_form">
-                <h:panelGroup id="messagePanel" layout="block">
-                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-                </h:panelGroup>
-                <h:outputText escape="false" value="#{bundle.ListEspecialistaEmpty}" rendered="#{especialistaController.items.rowCount == 0}"/>
-                <h:panelGroup rendered="#{especialistaController.items.rowCount > 0}">
-                    <h:outputText value="#{especialistaController.pagination.pageFirstItem + 1}..#{especialistaController.pagination.pageLastItem + 1}/#{especialistaController.pagination.itemsCount}"/>&nbsp;
-                    <h:commandLink action="#{especialistaController.previous}" value="#{bundle.Previous} #{especialistaController.pagination.pageSize}" rendered="#{especialistaController.pagination.hasPreviousPage}"/>&nbsp;
-                    <h:commandLink action="#{especialistaController.next}" value="#{bundle.Next} #{especialistaController.pagination.pageSize}" rendered="#{especialistaController.pagination.hasNextPage}"/>&nbsp;
-                    <h:dataTable value="#{especialistaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListEspecialistaTitle_noTrabajador}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.noTrabajador}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListEspecialistaTitle_nombre}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.nombre}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListEspecialistaTitle_correo}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.correo}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListEspecialistaTitle_contrasenia}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.contrasenia}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="&nbsp;"/>
-                            </f:facet>
-                            <h:commandLink action="#{especialistaController.prepareView}" value="#{bundle.ListEspecialistaViewLink}"/>
-                            <h:outputText value=" "/>
-                            <h:commandLink action="#{especialistaController.prepareEdit}" value="#{bundle.ListEspecialistaEditLink}"/>
-                            <h:outputText value=" "/>
-                            <h:commandLink action="#{especialistaController.destroy}" value="#{bundle.ListEspecialistaDestroyLink}"/>
-                        </h:column>
-                    </h:dataTable>
-                </h:panelGroup>
-                <br />
-                <h:commandLink action="#{especialistaController.prepareCreate}" value="#{bundle.ListEspecialistaCreateLink}"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ListEspecialistaIndexLink}"/>
-            </h:form>
+               
+            <section class="introduccion">
+                <h2>Introducción</h2>
+                <p>Esta sección es especialmente diseñada para ver la información de los especialistas,<strong> puedes agregar, eliminar y
+                modificar</strong> los datos de cualquier especialista registrado.</p>
+            </section>
+            
+            <main>
+                <h:form styleClass="jsfcrud_list_form">
+                
+                    
+                   <h:panelGroup id="messagePanel" layout="block">
+                       <h:messages errorStyle="color: black" infoStyle="color: green" layout="table"/>
+                   </h:panelGroup>
+                    
+                    <!--Agregar nuevo especialista-->
+                   <h:commandLink action="#{especialistaController.prepareCreate}" value="Registrar Nuevo Especialista" class="registro"/>
+                  
+                   <h:outputText escape="false" value="#{bundle.ListEspecialistaEmpty}" rendered="#{especialistaController.items.rowCount == 0}"/>
+                  
+                   <h:panelGroup rendered="#{especialistaController.items.rowCount > 0}">
+                       
+                       <h:commandLink action="#{especialistaController.previous}" value="#{bundle.Previous} #{especialistaController.pagination.pageSize}" rendered="#{especialistaController.pagination.hasPreviousPage}"/>&nbsp;
+                       <h:commandLink action="#{especialistaController.next}" value="#{bundle.Next} #{especialistaController.pagination.pageSize}" rendered="#{especialistaController.pagination.hasNextPage}"/>&nbsp;
+                       <h:dataTable value="#{especialistaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                           <h:column>
+                               <f:facet name="header">
+                                   <h:outputText value="#{bundle.ListEspecialistaTitle_noTrabajador}"/>
+                               </f:facet>
+                               <h:outputText value="#{item.noTrabajador}"/>
+                           </h:column>
+                           <h:column>
+                               <f:facet name="header">
+                                   <h:outputText value="#{bundle.ListEspecialistaTitle_nombre}"/>
+                               </f:facet>
+                               <h:outputText value="#{item.nombre}"/>
+                           </h:column>
+                           <h:column>
+                               <f:facet name="header">
+                                   <h:outputText value="#{bundle.ListEspecialistaTitle_correo}"/>
+                               </f:facet>
+                               <h:outputText value="#{item.correo}"/>
+                           </h:column>
+                           <h:column>
+                               <f:facet name="header">
+                                   <h:outputText value="Contraseña"/>
+                               </f:facet>
+                               <h:outputText value="#{item.contrasenia}"/>
+                           </h:column>
+                           <h:column>
+                               <f:facet name="header">
+                                   <h:outputText value="&nbsp;"/>
+                               </f:facet>
+                               <div class="opciones">
+                               <h:commandLink action="#{especialistaController.prepareView}" value="Ver Información"/>
+                               <h:commandLink action="#{especialistaController.prepareEdit}" value="Editar"/>
+                               <h:commandLink action="#{especialistaController.destroy}" value="Eliminar"/>
+                               </div>
+                              
+                           </h:column>
+                       </h:dataTable>
+                   </h:panelGroup>
+  
+               </h:form>
+                
+            </main>
+            
+            <footer>
+                <h3>Derechos reservados Universidad de Colima &copy;</h3>
+            </footer>
+            
+            <style>
+                a{
+                    color:black;
+                    text-decoration: none;
+                }
+                a:hover{
+                    border-bottom: 1px solid black;
+                }
+                
+                body, html,main{
+                    background: white;
+                    padding: 0;
+                    margin: 0;
+                    border: 0;
+                    width: 100%;
+                    height: 100%;
+                    font-size: 16px;
+                }
+                
+                main{
+                    height: 70%;
+                }
+                 
+                form{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    margin: auto;
+                    width: 70%;
+                    height: 70%;
+                    background: rgba(1,1,1,0.3);
+                    border-radius: 16px;
+                }
+                footer{
+                    display: flex;
+                    background: black;
+                    color: white;
+                    align-items: center;
+                    justify-content: center;
+                    height: 3em;
+                }
+                h1{
+                    border: 0;
+                    padding: 0;
+                    margin: 0;
+                    font-size: 1.5em;
+                }
+                h2{
+                    padding: 0;
+                    margin:0;
+                    border: 0;
+                }
+                 header{
+                    background: lightgreen;
+                    display: flex;
+                    color:black;
+                    height: 3em;
+                    align-items: center;
+                    justify-content: space-between;
+                    
+                }
+                td{
+                    font-size: 1.5em;
+                }
+               
+                th{
+                    font-size: 1.5em !important;
+                }
+                thead{
+                   width: 90%;
+                }
+                
+                .opciones{
+                    font-size: .5em !important;
+                }
+                .registro{
+                    margin:1.5em;
+                }
+                
+                .introduccion{
+                    text-align: center;  
+                }
+                
+                .linkIndex{
+                    font-size: .7em;
+                    margin-right: 15px;
+                    
+                }
+
+            </style>
+           
         </ui:define>
+        
+        
     </ui:composition>
 
 </html>
