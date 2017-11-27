@@ -7,17 +7,18 @@
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
-          <header>
-                <h:outputText value="Usuarios"></h:outputText>
-                <nav>
-                    <ul>
-                        <li> <h:link outcome="/index" value="Menù principal" class='index'/></li>
-                    </ul>
-                </nav>
+             <header>
+                 <h1>Usuario</h1>
+                  <h:link outcome="/index" value="Menú principal" class="linkIndex"/>
             </header>
         </ui:define>
         <ui:define name="body">
-            
+             <section class="introduccion">
+                <h2>Introducción</h2>
+                <hr></hr>
+                <p>Esta sección es especialmente diseñada para ver la información de los Usuarios,<strong> puedes agregar, eliminar y
+                modificar</strong> los datos de cualquier especialista registrado.</p>
+            </section>
             <div class='contenedor'>
             
             <h:form styleClass="jsfcrud_list_form">
@@ -94,81 +95,109 @@
                 <h2>Derechos reservados por la Universidad de Colima</h2>
             </footer>
             
-      <style>      
-               a{
-            color: lightskyblue;
-            text-decoration: none;
-        }
-        a:hover{
-            border-bottom: 1px solid black;
-        }
-        body,html{
-           margin: 0;
-           padding: 0;
-           border: 0;
-           height: 100%;
-           width: 100%;
-        }
-        
-        footer{
-            margin: 0;
-            padding: 0;
-            border: 0;
-            background: black;
-            color: white;
-            width: 100%;
-            height: 58px;
-            text-align: center;
-        }
-        
-        
+       <style>
+                a{
+                    color:black;
+                    text-decoration: none;
+                }
+                a:hover{
+                    border-bottom: 1px solid black;
+                }
+                
+                body, html,main{
+                    background: silver;
+                    padding: 0;
+                    margin: 0;
+                    border: 0;
+                    width: 100%;
+                    height: 100%;
+                    font-size: 16px;
+                }
+                
+                main{
+                    height: 70%;
+                }
+                 
+                form{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    margin: auto;
+                    width: 70%;
+                    height: 70%;
+                    background: rgba(1,1,1,0.3);
+                    border-radius: 16px;
+                }
+                footer{
+                    display: flex;
+                    background: black;
+                    color: white;
+                    align-items: center;
+                    justify-content: center;
+                    height: 3em;
+                }
+                h1{
+                    border: 0;
+                    padding: 0;
+                    margin: 0;
+                    font-size: 1.5em;
+                }
+                h2{
+                    padding: 0;
+                    margin:0;
+                    border: 0;
+                }
+                 header{
+                    background: lightgreen;
+                    display: flex;
+                    color:black;
+                    height: 3em;
+                    align-items: center;
+                    justify-content: space-between;
+                    border-bottom: 2px solid black;
+                    
+                }
+                hr{
+                    color: black !important;
+                    width: 50%;
+                    size: 10px;
+                }
+                td{
+                    font-size: 1em;
+                }
+               
+                th{
+                    font-size: 1em !important;
+                }
+                thead{
+                   width: 90%;
+                }
+                .contenedor{
+                    height: 83%;
+                }
+                .opciones{
+                    font-size: .5em !important;
+                }
+                .registro{
+                    margin:1.5em;
+                    color: lightskyblue;
+                    border-bottom: 1px solid white;
+                }
+                
+                .introduccion{
+                    text-align: center;  
+                }
+                
+                .linkIndex{
+                    font-size: .7em;
+                    margin-right: 15px;
+                    
+                }
 
-        header{
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            height: 80px;
-            background: lightgreen;
-            border-bottom: 2px solid black;
+            </style>
             
-        }
-        h1{
-            border: 0;
-            padding: 0;
-            margin: 0;
-        }
-
-        ul{
-            list-style: none;
-        }
-        
-        ul a{
-            color: black;
-            text-decoration: none;
-        }
-        td{
-            font-size: 1.5em;
-        }
-        
-        .contenedor{
-            width: 80%;
-            background: red;
-            margin: auto;
-            margin-top: 2em;
-            height: 600px;
-            background: rgba(1,1,1,0.5);
-            border-radius: 10px;
-            border: 2px solid black;
-            color: white;
-            font-size: 1.5em;
-        }
-            
-        .opciones{
-            display: flex;
-            justify-content: space-between;
-        }
-    </style>
+           
+       
         </ui:define>
     </ui:composition>
 
